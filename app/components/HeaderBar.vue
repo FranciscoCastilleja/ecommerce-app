@@ -1,5 +1,5 @@
 <template>
-    <header class="flex h-[100px] bg-[#1E1E1E] border-b border-[#F5F5F5] items-center justify-around">
+    <header class="flex relative h-[100px] bg-[#1E1E1E] border-b border-[#F5F5F5] items-center justify-around z-10">
         <NuxtLink href="/">
             <h1 class="text-[#F5F5F5] text-2xl font-bold">E-commerce App</h1>
         </NuxtLink>

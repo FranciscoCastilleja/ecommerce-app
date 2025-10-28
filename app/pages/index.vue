@@ -3,9 +3,9 @@
 </script>
 
 <template>
-  <div class="flex h-[calc(100vh-100px)] items-center">
+  <div class="flex relative h-[calc(100vh-100px)] overflow-hidden z-0">
     <CategoriesBar />
-    <div id="ProductsListContainer" class="grid py-60 w-[90%] h-[625px] col-start-3 col-end-7 overflow-y-auto place-items-center gap-[500px]">
+    <div id="ProductsListContainer" class="flex relative flex-col flex-1 w-full py-8 px-6 gap-8 overflow-y-auto z-0">
       <ProductsList v-for="categorie in data" :cat="categorie.slug" :name="categorie.name"></ProductsList>
     </div>
   </div>

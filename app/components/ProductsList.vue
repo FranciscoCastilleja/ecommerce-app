@@ -6,7 +6,7 @@
 </script>
 
 <template>
-    <div class="flex relative w-[95%] h-fit border border-[#333333] rounded-lg overflow-x-auto gap-4 p-1">
+    <div class="flex relative w-full border border-[#333333] rounded-lg gap-4 p-1">
         <h2 class="grid sticky w-52 h-[400px] left-0 text-white font-bold text-lg bg-[#121212] flex-shrink-0 place-items-center">{{ props.name }}</h2>
         <div id="ProductListContainer" class="flex px-2 relative w-[95%] h-fit overflow-x-auto gap-4">
             <ProductCard :cat="props.cat" />
