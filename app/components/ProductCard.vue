@@ -17,7 +17,7 @@
     <div v-for="product in data.products" class="group grid relative w-[280px] flex-shrink-0 border border-[#333333] place-items-center rounded-lg">
         <div class="relative w-[230px] overflow-hidden">
             <img :src="product.thumbnail" alt="Producto" class="size-full object-cover transform transition-transform duration-500 ease-in-out group-hover:scale-110" />
-            <button class="flex absolute size-[38px] cursor-pointer text-[#B3B3B3] top-[10px] right-[10px] border-none rounded-full justify-center items-center hover:bg-[#ff4d4d] hover:text-white" title="Agregar a favoritos">
+            <button class="flex absolute size-[38px] cursor-pointer text-[#B3B3B3] top-[10px] right-[10px] border-none rounded-full justify-center items-center hover:bg-[#ff4d4d] hover:text-white" title="Agregar a favoritos" @click="addFavorite(product.id)">
                 <svg class="size-[20px] fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                     <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5
                         2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09
