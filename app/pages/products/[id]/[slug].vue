@@ -4,6 +4,12 @@
     const slug = route.params.slug
 
     const { data } = await useFetch(`https://dummyjson.com/products/${id}`);
+
+    const addFavorite = (productId) => {
+        const favorites = useAddFavorite(productId)
+    }
+
+    const { favorites } = useGetFavorites()
 </script>
 
 <template>
@@ -31,7 +37,7 @@
                 </div>
                 <div class="flex mt-4 items-center gap-3">
                     <button class="bg-[#FF6A00] text-[#F5F5F5] border-none py-3 px-5 text-base rounded-md cursor-pointer w-fit hover:bg-[#E55E00]">Agregar al carrito</button>
-                    <button class="flex size-[38px] cursor-pointer text-[#B3B3B3] border-none rounded-full justify-center items-center hover:bg-[#ff4d4d] hover:text-white" title="Agregar a favoritos" @click="addFavorite(data.id)">
+                    <button class="flex size-[38px] cursor-pointer text-[#B3B3B3] border-none rounded-full justify-center items-center hover:bg-[#ff4d4d] hover:text-white" :class="favorites.some((fav) => fav.id === data.id) ? 'text-[#ff4d4d]' : 'text-[#B3B3B3]'" title="Agregar a favoritos" @click="addFavorite(data.id)">
                         <svg class="size-[20px] fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                             <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5
                                 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09
