@@ -10,6 +10,10 @@
     }
 
     const { favorites } = useGetFavorites()
+
+    const addCart = (productId) => {
+        const cart = useAddCart(productId)
+    }
 </script>
 
 <template>
@@ -36,7 +40,7 @@
                     <span v-for="tag in data.tags" class="bg-[#333333] mr-2 py-1 px-2 rounded text-xs text-[#B3B3B3]">{{ tag }}</span>
                 </div>
                 <div class="flex mt-4 items-center gap-3">
-                    <button class="bg-[#FF6A00] text-[#F5F5F5] border-none py-3 px-5 text-base rounded-md cursor-pointer w-fit hover:bg-[#E55E00]">Agregar al carrito</button>
+                    <button class="bg-[#FF6A00] text-[#F5F5F5] border-none py-3 px-5 text-base rounded-md cursor-pointer w-fit hover:bg-[#E55E00]" @click="addCart(data.id)">Agregar al carrito</button>
                     <button class="flex size-[38px] cursor-pointer text-[#B3B3B3] border-none rounded-full justify-center items-center hover:bg-[#ff4d4d] hover:text-white" :class="favorites.some((fav) => fav.id === data.id) ? 'text-[#ff4d4d]' : 'text-[#B3B3B3]'" title="Agregar a favoritos" @click="addFavorite(data.id)">
                         <svg class="size-[20px] fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                             <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5

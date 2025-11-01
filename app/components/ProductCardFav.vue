@@ -13,6 +13,10 @@
     const removeFavorite = (productId) => {
         const favorites = useRemoveFavorite(productId)
     }
+
+    const addCart = (productId) => {
+        const cart = useAddCart(productId)
+    }
 </script>
 
 <template>
@@ -28,8 +32,8 @@
         <div class="text-[18px] font-bold text-[#FF6A00]">${{ Math.round((props.product.price - (props.product.price * props.product.discountPercentage / 100)) * 100) / 100 }}</div>
         <div class="text-[14px] mb-[8px] text-[#B3B3B3]">{{ props.product.availabilityStatus }} ({{ props.product.stock }} en stock)</div>
         <div class="flex justify-between mt-auto gap-[8px]">
-            <button class="flex-1 border-none rounded-[6px] p-[10px] cursor-pointer font-bold text-[#F5F5F5] bg-[#FF6A00] hover:bg-[#E55E00]">Agregar al carrito</button>
-            <button class="flex-1 border-none rounded-[6px] p-[10px] cursor-pointer font-bold text-[#B3B3B3] bg-[#333333] hover:bg-[#2A2A2A]"  @click="removeFavorite(props.product.id)">Eliminar</button>
+            <button class="flex-1 border-none rounded-[6px] p-[10px] cursor-pointer font-bold text-[#F5F5F5] bg-[#FF6A00] hover:bg-[#E55E00]" @click="addCart(props.product.id)">Agregar al carrito</button>
+            <button class="flex-1 border-none rounded-[6px] p-[10px] cursor-pointer font-bold text-[#B3B3B3] bg-[#333333] hover:bg-[#2A2A2A]" @click="removeFavorite(props.product.id)">Eliminar</button>
         </div>
     </div>
 </template>

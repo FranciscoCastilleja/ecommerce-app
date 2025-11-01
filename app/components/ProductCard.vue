@@ -17,6 +17,10 @@
     }
 
     const { favorites } = useGetFavorites()
+
+    const addCart = (productId) => {
+        const cart = useAddCart(productId)
+    }
 </script>
 
 <template>
@@ -49,7 +53,7 @@
                 </svg>
                 <span>{{ product.rating }}</span>
             </div>
-            <button class="w-full p-[10px] bg-[#FF6A00] border-none rounded-[10px] text-[#F5F5F5] font-base cursor-pointer hover:bg-[#E55E00]">Agregar al carrito</button>
+            <button class="w-full p-[10px] bg-[#FF6A00] border-none rounded-[10px] text-[#F5F5F5] font-base cursor-pointer hover:bg-[#E55E00]" @click="addCart(product.id)">Agregar al carrito</button>
         </div>
     </div>
 </template>
