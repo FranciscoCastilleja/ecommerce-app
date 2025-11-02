@@ -31,15 +31,16 @@
     const selectedBrands = ref([])
     const priceMin = ref(priceRange.min)
     const priceMax = ref(priceRange.max)
-    /*const selectedRatings = ref([])*/
+    const selectedRatings = ref(ratingRange.min)
 
     const emit = defineEmits(['filtersChanged'])
 
-    watch([selectedSort, selectedBrands, priceMin, priceMax], () => {
+    watch([selectedSort, selectedBrands, priceMin, priceMax, selectedRatings], () => {
         emit('filtersChanged', {
             sort: selectedSort.value,
             brands: selectedBrands.value,
-            price: { min: priceMin.value || null, max: priceMax.value || null }
+            price: { min: priceMin.value || null, max: priceMax.value || null },
+            ratings: selectedRatings.value
         })
     })
 </script>
@@ -81,7 +82,7 @@
         <fieldset class="w-full p-4 bg-[#252525] border border-[#333] rounded-lg">
             <legend class="font-semibold text-[#F5F5F5]">Valoración</legend>
             <div class="flex justify-center gap-2">
-                <button v-for="star in 5" :key="star" type="button" @click="ratingRange.min = star" class="text-2xl transition-colors" :class="star <= ratingRange.min ? 'text-yellow-400' : 'text-gray-500 hover:text-yellow-300'">
+                <button v-for="star in 5" :key="star" type="button" @click="selectedRatings = star" class="text-2xl transition-colors" :class="star <= selectedRatings ? 'text-yellow-400' : 'text-gray-500 hover:text-yellow-300'">
                     ★
                 </button>
             </div>

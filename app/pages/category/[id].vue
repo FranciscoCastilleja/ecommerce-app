@@ -7,7 +7,7 @@
         sort: 'default',
         brands: [],
         price: { min: null, max: null },
-        ratings: []
+        ratings: null
     })
 
     const originalProducts = ref([...data.value.products])
@@ -33,11 +33,9 @@
             if (max != null) products = products.filter(p => p.price <= max)
         }
 
-        /*
-            if (filters.value.ratings.length > 0) {
-                products = products.filter(p => filters.value.ratings.includes(Math.floor(p.rating)))
-            }
-        */
+        if (filters.value.ratings != null) {
+            products = products.filter(p => p.rating >= filters.value.ratings)
+        }
 
         switch (filters.value.sort) {
             case "price-asc":
