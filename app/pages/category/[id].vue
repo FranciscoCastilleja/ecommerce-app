@@ -3,13 +3,28 @@
 
     const { data } = await useFetch(`https://dummyjson.com/products/category/${route.params.id}`);
 
-    const sortOption = ref('default')
+    const filters = ref({
+        sort: 'default',
+        brands: [],
+        price: { min: null, max: null },
+        ratings: [],
+        discount: false
+    })
+
     const originalProducts = ref([...data.value.products])
 
-    const sortedProducts = computed(() => {
-        const products = [...originalProducts.value]
+    function updateFilters(newFilters) {
+        filters.value = newFilters
+    }
 
-        switch (sortOption.value) {
+    const filteredProducts = computed(() => {
+        let products = [...originalProducts.value]
+
+        if (filters.value.brands.length > 0) {
+            products = products.filter(p => filters.value.brands.includes(p.brand))
+        }
+
+        switch (filters.value.sort) {
             case "price-asc":
                 products.sort((a, b) => a.price - b.price)
                 break
@@ -38,11 +53,11 @@
 
 <template>
     <div class="flex h-[calc(100vh-100px)] items-center">
-        <FilterBar @sortChanged="sortOption = $event" />
+        <FilterBar @filtersChanged="updateFilters" />
         <div class="grid w-[85%] h-[625px] overflow-y-auto place-items-center">
             <h2 class="w-full text-center font-bold text-[40px] text-[#F5F5F5] capitalize">Categoría {{ $route.params.id }}</h2>
             <div id="ProductsContainer" class="grid w-[90%] h-[500px] overflow-y-auto grid-cols-3 gap-10">
-                <ProductCard v-for="product in sortedProducts" :product="product" />
+                <ProductCard v-for="product in filteredProducts" :product="product" />
             </div>
         </div>
     </div>

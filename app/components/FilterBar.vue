@@ -27,12 +27,16 @@
         };
     });
 
-    const selected = ref('default')
+    const selectedSort = ref('default')
+    const selectedBrands = ref([])
 
-    const emit = defineEmits(['sortChanged'])
+    const emit = defineEmits(['filtersChanged'])
 
-    watch(selected, (newValue) => {
-        emit('sortChanged', newValue)
+    watch([selectedSort, selectedBrands], () => {
+        emit('filtersChanged', {
+            sort: selectedSort.value,
+            brands: selectedBrands.value
+        })
     })
 </script>
 
@@ -42,7 +46,7 @@
         <fieldset class="w-full p-4 bg-[#252525] border border-[#333] rounded-lg">
             <legend class="font-semibold text-[#F5F5F5]">Ordenar por</legend>
             <div class="flex flex-col gap-2">
-                <select name="order" id="order" v-model="selected" class="w-full bg-[#1E1E1E] text-[#F5F5F5] border border-[#333] rounded px-2 py-1 focus:outline-none focus:ring-1 focus:ring-[#E55E00]">
+                <select name="order" id="order" v-model="selectedSort" class="w-full bg-[#1E1E1E] text-[#F5F5F5] border border-[#333] rounded px-2 py-1 focus:outline-none focus:ring-1 focus:ring-[#E55E00]">
                     <option value="default" class="text-[#F5F5F5]">Predeterminado</option>
                     <option value="price-asc" class="text-[#F5F5F5]">Precio: menor a mayor</option>
                     <option value="price-desc" class="text-[#F5F5F5]">Precio: mayor a menor</option>
@@ -57,7 +61,7 @@
             <legend class="font-semibold text-[#F5F5F5]">Marcas</legend>
             <div class="flex flex-col gap-2">
                 <label v-for="brand in brands" :key="brand" class="flex items-center gap-2 cursor-pointer text-[#EAEAEA] hover:text-[#E55E00]">
-                    <input type="checkbox" class="sr-only peer" />
+                    <input type="checkbox" :value="brand" v-model="selectedBrands" class="sr-only peer" />
                     <span class="w-4 h-4 rounded border border-[#555] flex items-center justify-center peer-checked:bg-[#E55E00] peer-checked:border-[#E55E00]"></span>
                     <span>{{ brand }}</span>
                 </label>
@@ -76,16 +80,6 @@
                 <button v-for="star in 5" :key="star" type="button" @click="ratingRange.min = star" class="text-2xl transition-colors" :class="star <= ratingRange.min ? 'text-yellow-400' : 'text-gray-500 hover:text-yellow-300'">
                     ★
                 </button>
-            </div>
-        </fieldset>
-        <fieldset class="w-full p-4 bg-[#252525] border border-[#333] rounded-lg">
-            <legend class="font-semibold text-[#F5F5F5]">Descuento</legend>
-            <div class="flex gap-2">
-                <label class="flex items-center gap-2 cursor-pointer text-[#EAEAEA] hover:text-[#E55E00]">
-                    <input type="checkbox" class="sr-only peer" />
-                    <span class="w-4 h-4 rounded border border-[#555] flex items-center justify-center peer-checked:bg-[#E55E00] peer-checked:border-[#E55E00]"></span>
-                    <span>Con descuento</span>
-                </label>
             </div>
         </fieldset>
     </div>
