@@ -1,12 +1,11 @@
-1. Agregar al Carrito
-2. Implementar el filtro en categoría
-3. Proceder a la compra
-4. Actualizar los datos en el carrito
-5. Implementar el botón de eliminar
-6. Actualizar los datos en el checkout
-7. Confirmar y pagar
-8. Búsqueda
-9.  Drag and Drop al carrito y a favoritos
+1. Implementar el filtro en categoría
+2. Proceder a la compra
+3. Actualizar los datos en el carrito
+4. Implementar el botón de eliminar
+5. Actualizar los datos en el checkout
+6. Confirmar y pagar
+7. Búsqueda
+8.  Drag and Drop al carrito y a favoritos
 
 # 🛒 E-commerfce con Nuxt, Tailwind y TypeScript
 

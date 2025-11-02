@@ -26,6 +26,14 @@
             max: Math.max(...ratings)
         };
     });
+
+    const selected = ref('default')
+
+    const emit = defineEmits(['sortChanged'])
+
+    watch(selected, (newValue) => {
+        emit('sortChanged', newValue)
+    })
 </script>
 
 <template>
@@ -34,7 +42,7 @@
         <fieldset class="w-full p-4 bg-[#252525] border border-[#333] rounded-lg">
             <legend class="font-semibold text-[#F5F5F5]">Ordenar por</legend>
             <div class="flex flex-col gap-2">
-                <select name="order" id="order" class="w-full bg-[#1E1E1E] text-[#F5F5F5] border border-[#333] rounded px-2 py-1 focus:outline-none focus:ring-1 focus:ring-[#E55E00]">
+                <select name="order" id="order" v-model="selected" class="w-full bg-[#1E1E1E] text-[#F5F5F5] border border-[#333] rounded px-2 py-1 focus:outline-none focus:ring-1 focus:ring-[#E55E00]">
                     <option value="default" class="text-[#F5F5F5]">Predeterminado</option>
                     <option value="price-asc" class="text-[#F5F5F5]">Precio: menor a mayor</option>
                     <option value="price-desc" class="text-[#F5F5F5]">Precio: mayor a menor</option>

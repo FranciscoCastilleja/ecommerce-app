@@ -1,9 +1,7 @@
 <script setup>
     const props = defineProps({
-        cat: String
+        product: String
     })
-
-    const { data } = await useFetch(`https://dummyjson.com/products/category/${props.cat}`);
 
     function toSlug(name) {
         return name
@@ -24,7 +22,7 @@
 </script>
 
 <template>
-    <div v-for="product in data.products" class="group grid relative w-[280px] flex-shrink-0 border border-[#333333] place-items-center rounded-lg">
+    <div class="group grid relative w-[280px] flex-shrink-0 border border-[#333333] place-items-center rounded-lg">
         <div class="relative w-[230px] overflow-hidden">
             <img :src="product.thumbnail" alt="Producto" class="size-full object-cover transform transition-transform duration-500 ease-in-out group-hover:scale-110" />
             <button class="flex absolute size-[38px] cursor-pointer text-[#B3B3B3] top-[10px] right-[10px] border-none rounded-full justify-center items-center hover:bg-[#ff4d4d] hover:text-white" :class="favorites.some((fav) => fav.id === product.id) ? 'text-[#ff4d4d]' : 'text-[#B3B3B3]'" title="Agregar a favoritos" @click="addFavorite(product.id)">
