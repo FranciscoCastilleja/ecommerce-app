@@ -29,13 +29,17 @@
 
     const selectedSort = ref('default')
     const selectedBrands = ref([])
+    const priceMin = ref(priceRange.min)
+    const priceMax = ref(priceRange.max)
+    /*const selectedRatings = ref([])*/
 
     const emit = defineEmits(['filtersChanged'])
 
-    watch([selectedSort, selectedBrands], () => {
+    watch([selectedSort, selectedBrands, priceMin, priceMax], () => {
         emit('filtersChanged', {
             sort: selectedSort.value,
-            brands: selectedBrands.value
+            brands: selectedBrands.value,
+            price: { min: priceMin.value || null, max: priceMax.value || null }
         })
     })
 </script>
@@ -70,8 +74,8 @@
         <fieldset class="w-full p-4 bg-[#252525] border border-[#333] rounded-lg">
             <legend class="font-semibold text-[#F5F5F5]">Precio</legend>
             <div class="flex gap-2">
-                <input type="text" name="minPrice" id="minPrice" v-model.number="priceRange.min" placeholder="Min." class="w-1/2 px-2 py-1 rounded border border-[#333] bg-[#1E1E1E] text-[#F5F5F5] focus:outline-none focus:ring-1 focus:ring-[#E55E00]" />
-                <input type="text" name="maxPrice" id="maxPrice" v-model.number="priceRange.max" placeholder="Max." class="w-1/2 px-2 py-1 rounded border border-[#333] bg-[#1E1E1E] text-[#F5F5F5] focus:outline-none focus:ring-1 focus:ring-[#E55E00]" />
+                <input type="number" name="minPrice" id="minPrice" v-model.number="priceMin" placeholder="Min." class="w-1/2 px-2 py-1 rounded border border-[#333] bg-[#1E1E1E] text-[#F5F5F5] focus:outline-none focus:ring-1 focus:ring-[#E55E00]" />
+                <input type="number" name="maxPrice" id="maxPrice" v-model.number="priceMax" placeholder="Max." class="w-1/2 px-2 py-1 rounded border border-[#333] bg-[#1E1E1E] text-[#F5F5F5] focus:outline-none focus:ring-1 focus:ring-[#E55E00]" />
             </div>
         </fieldset>
         <fieldset class="w-full p-4 bg-[#252525] border border-[#333] rounded-lg">
@@ -100,5 +104,15 @@
 
     #FilterBar::-webkit-scrollbar-thumb:hover {
         background: #555;
+    }
+
+    input[type=number]::-webkit-outer-spin-button,
+    input[type=number]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    input[type=number] {
+        -moz-appearance: textfield;
     }
 </style>
