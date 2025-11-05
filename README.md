@@ -1,15 +1,16 @@
-1. Implementar el filtro en categoría
-2. Proceder a la compra
-3. Actualizar los datos en el carrito
+1. Actualizar los datos en el carrito al eliminar un producto
+2. Mostrar cantidad en el boton del carrito
+3. Proceder a la compra
 4. Implementar el botón de eliminar
 5. Actualizar los datos en el checkout
 6. Confirmar y pagar
 7. Búsqueda
 8.  Drag and Drop al carrito y a favoritos
+9.  Notificaciones o animaciones
 
 # 🛒 E-commerfce con Nuxt, Tailwind y TypeScript
 
-Este proyecto es una tienda en línea moderna desarrollada con **Nuxt 3**, **Tailwind CSS** y **TypeScript**, enfocada en ofrecer una experiencia rápida, fluida y visualmente atractiva.  
+Este proyecto es una tienda en línea moderna desarrollada con **Nuxt**, **Tailwind CSS** y **TypeScript**, enfocada en ofrecer una experiencia rápida, fluida y visualmente atractiva.  
 El proyecto fue desplegado en **Vercel**, aprovechando su entorno optimizado para SSR (Server Side Rendering) y rendimiento.
 
 ---
