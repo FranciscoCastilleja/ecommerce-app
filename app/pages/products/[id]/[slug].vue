@@ -14,16 +14,18 @@
     const addCart = (productId) => {
         const cart = useAddCart(productId)
     }
+
+    const image = ref(data.value.images[0] || '')
 </script>
 
 <template>
     <div class="flex w-full justify-center">
         <div id="ProductDataContainer" class="flex mt-1 mx-auto p-4 w-[80%] h-[630px] gap-8 flex-wrap overflow-y-auto flex-col lg:flex-row">
             <div class="flex flex-grow flex-shrink basis-[400px] flex-col gap-1">
-                <img :src="data.images[0]" alt="" class="w-full object-cover border border-[#333] rounded-lg">
+                <img :src="image" alt="" class="w-full object-cover border border-[#333] rounded-lg">
                 <div class="flex w-full py-1 border border-[#333] rounded-lg justify-start items-center">
                     <span v-for="img in data.images" :key="img" class="ml-2">
-                        <img :src="img" alt="" class="size-20 object-cover border border-[#333] rounded-lg cursor-pointer"/>
+                        <img :src="img" alt="" class="size-20 object-cover border border-[#333] rounded-lg cursor-pointer" @click="image = img"/>
                     </span>
                 </div>
             </div>

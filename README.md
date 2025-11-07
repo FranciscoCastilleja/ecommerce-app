@@ -1,7 +1,6 @@
-1. Búsqueda
-2. Drag and Drop al carrito y a favoritos
-3. Notificaciones o animaciones
-4. Resolver problemas de Hydratacion
+1. Drag and Drop al carrito y a favoritos
+2. Notificaciones o animaciones
+3. Resolver problemas de Hydratacion
 
 # 🛒 E-commerfce con Nuxt, Tailwind y TypeScript
 
