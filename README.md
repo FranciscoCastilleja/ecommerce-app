@@ -1,12 +1,7 @@
-1. Actualizar los datos en el carrito al eliminar un producto
-2. Mostrar cantidad en el boton del carrito
-3. Proceder a la compra
-4. Implementar el botón de eliminar
-5. Actualizar los datos en el checkout
-6. Confirmar y pagar
-7. Búsqueda
-8.  Drag and Drop al carrito y a favoritos
-9.  Notificaciones o animaciones
+1. Búsqueda
+2. Drag and Drop al carrito y a favoritos
+3. Notificaciones o animaciones
+4. Resolver problemas de Hydratacion
 
 # 🛒 E-commerfce con Nuxt, Tailwind y TypeScript
 

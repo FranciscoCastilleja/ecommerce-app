@@ -1,6 +1,6 @@
 <template>
     <div class="h-screen bg-[#121212]">
-        <HeaderBar />
+        <HeaderBar/>
         <NuxtPage />
     </div>
 </template>

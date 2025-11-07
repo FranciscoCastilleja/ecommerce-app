@@ -28,6 +28,13 @@
         cartItems.value.splice(index, 1) 
         getSubtotal()
     }
+
+    async function checkout() {
+        if (cart.value.length > 0) {
+            await useAddCheckout(cart.value, subtotal.value, shippingCost.value, imp.value, total.value)
+            location.href = '/checkout';
+        }
+    }
 </script>
 
 <template>
@@ -53,7 +60,7 @@
                 <span>Total: </span>
                 <span>${{ total }}</span>
             </div>
-            <button class="w-full bg-[#FF6A00] text-[#F5F5F5] border-none p-[12px] rounded-lg cursor-pointer font-bold text-[15px] mt-[15px] hover:bg-[#E55E00]">Proceder a la compra</button>
+            <button class="w-full bg-[#FF6A00] text-[#F5F5F5] border-none p-[12px] rounded-lg cursor-pointer font-bold text-[15px] mt-[15px] hover:bg-[#E55E00]" @click="checkout">Proceder a la compra</button>
         </div>
     </div>
 </template>
