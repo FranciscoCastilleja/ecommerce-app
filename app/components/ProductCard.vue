@@ -19,12 +19,26 @@
     const addCart = (productId) => {
         const cart = useAddCart(productId)
     }
+
+    const draggableElement = ref()
+    const sourceContainer = ref()
+
+    const dragStart = (event) => {
+        draggableElement.value = event.target
+        sourceContainer.value = draggableElement.value.parentNode
+        event.dataTransfer.setData('text/plain', draggableElement.value.dataset.id)
+    }
+
+    const dragEnd = () => {
+        draggableElement.value = null
+        sourceContainer.value = null
+    }
 </script>
 
 <template>
     <div class="group grid relative w-[280px] flex-shrink-0 border border-[#333333] place-items-center rounded-lg">
         <div class="relative w-[230px] overflow-hidden">
-            <img :src="product.thumbnail" alt="Producto" class="size-full object-cover transform transition-transform duration-500 ease-in-out group-hover:scale-110" />
+            <img :src="product.thumbnail" alt="Producto" :key="product.id" :data-id="product.id" class="size-full object-cover transform transition-transform duration-500 ease-in-out group-hover:scale-110" draggable v-on:dragstart="dragStart" v-on:dragend="dragEnd" />
             <button class="flex absolute size-[38px] cursor-pointer text-[#B3B3B3] top-[10px] right-[10px] border-none rounded-full justify-center items-center hover:bg-[#ff4d4d] hover:text-white" :class="favorites.some((fav) => fav.id === product.id) ? 'text-[#ff4d4d]' : 'text-[#B3B3B3]'" title="Agregar a favoritos" @click="addFavorite(product.id)">
                 <svg class="size-[20px] fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                     <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5
