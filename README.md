@@ -1,5 +1,4 @@
-1. Resolver problemas de Hydratacion
-2. Transiciones
+1. Transiciones
 
 # 🛒 E-commerfce con Nuxt, Tailwind y TypeScript
 
