@@ -28,7 +28,7 @@ export async function useAddCart(productId: number) {
             })
             return true
         } else {
-            cart.value = cart.value.filter((cartItem: any) => cartItem.id !== productId)
+            return false
         }
     } catch (error) {
         console.error('Error al agregar al carrito: ', error);

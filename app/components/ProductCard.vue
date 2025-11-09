@@ -16,8 +16,14 @@
 
     const { favorites } = useGetFavorites()
 
-    const addCart = (productId) => {
-        const cart = useAddCart(productId)
+    const added = ref(false)
+
+    const addCart = async (productId) => {
+        const card = await useAddCart(productId)
+        if (card) {
+            added.value = true
+            setTimeout(() => (added.value = false), 1500)
+        }
     }
 
     const draggableElement = ref()
@@ -65,7 +71,40 @@
                 </svg>
                 <span>{{ product.rating }}</span>
             </div>
-            <button class="w-full p-[10px] bg-[#FF6A00] border-none rounded-[10px] text-[#F5F5F5] font-base cursor-pointer hover:bg-[#E55E00]" @click="addCart(product.id)">Agregar al carrito</button>
+            <button :class="['flex items-center justify-center gap-2 w-full p-[10px] bg-[#FF6A00] border-none rounded-[10px] text-[#F5F5F5] font-base cursor-pointer transition-all duration-300 ease-in-out hover:bg-[#E55E00]', added ? 'bg-green-500 hover:bg-green-600 scale-105' : 'bg-[#FF6A00] hover:bg-[#E55E00]']" @click="addCart(product.id)">
+                <span v-if="!added">Agregar al carrito</span>
+                <span v-else class="flex items-center gap-1">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="w-5 h-5 text-white animate-check"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                    >
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    Agregado
+                </span>
+            </button>
         </div>
     </div>
 </template>
+
+<style scoped>
+    @keyframes check {
+        0% {
+            transform: scale(0);
+            opacity: 0;
+        }
+        50% {
+            transform: scale(1.3);
+            opacity: 1;
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+    .animate-check {
+        animation: check 0.4s ease-in-out;
+    }
+</style>

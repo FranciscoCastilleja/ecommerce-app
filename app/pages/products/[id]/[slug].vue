@@ -11,8 +11,14 @@
 
     const { favorites } = useGetFavorites()
 
-    const addCart = (productId) => {
-        const cart = useAddCart(productId)
+    const added = ref(false)
+
+    const addCart = async (productId) => {
+        const card = await useAddCart(productId)
+        if (card) {
+            added.value = true
+            setTimeout(() => (added.value = false), 1500)
+        }
     }
 
     const image = ref(data.value.images[0] || '')
@@ -42,7 +48,21 @@
                     <span v-for="tag in data.tags" class="bg-[#333333] mr-2 py-1 px-2 rounded text-xs text-[#B3B3B3]">{{ tag }}</span>
                 </div>
                 <div class="flex mt-4 items-center gap-3">
-                    <button class="bg-[#FF6A00] text-[#F5F5F5] border-none py-3 px-5 text-base rounded-md cursor-pointer w-fit hover:bg-[#E55E00]" @click="addCart(data.id)">Agregar al carrito</button>
+                    <button :class="['flex items-center justify-center gap-2 w-fit py-3 px-5 bg-[#FF6A00] border-none rounded-md text-[#F5F5F5] font-base cursor-pointer transition-all duration-300 ease-in-out hover:bg-[#E55E00]', added ? 'bg-green-500 hover:bg-green-600 scale-105' : 'bg-[#FF6A00] hover:bg-[#E55E00]']" @click="addCart(data.id)">
+                        <span v-if="!added">Agregar al carrito</span>
+                        <span v-else class="flex items-center gap-1">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="w-5 h-5 text-white animate-check"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                            >
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                            Agregado
+                        </span>
+                    </button>
                     <button class="flex size-[38px] cursor-pointer text-[#B3B3B3] border-none rounded-full justify-center items-center hover:bg-[#ff4d4d] hover:text-white" :class="favorites.some((fav) => fav.id === data.id) ? 'text-[#ff4d4d]' : 'text-[#B3B3B3]'" title="Agregar a favoritos" @click="addFavorite(data.id)">
                         <svg class="size-[20px] fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                             <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5

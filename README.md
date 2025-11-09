@@ -1,6 +1,5 @@
-1. Drag and Drop al carrito y a favoritos
-2. Notificaciones o animaciones
-3. Resolver problemas de Hydratacion
+1. Resolver problemas de Hydratacion
+2. Transiciones
 
 # 🛒 E-commerfce con Nuxt, Tailwind y TypeScript
 
