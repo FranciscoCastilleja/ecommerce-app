@@ -5,5 +5,13 @@ export default defineNuxtConfig({
   modules: ['@nuxtjs/tailwindcss'],
   app: {
     pageTransition: { name: 'page', mode: 'out-in' },
+    head: {
+      title: 'E-Commerce App | Nuxt',
+      htmlAttrs: {
+        lang: 'es',
+      },
+      charset: 'utf-16',
+      viewport: 'width=device-width, initial-scale=1, maximum-scale=1',
+    },
   },
 })

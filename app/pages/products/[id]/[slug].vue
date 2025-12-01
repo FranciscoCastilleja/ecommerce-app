@@ -22,6 +22,10 @@
     }
 
     const image = ref(data.value.images[0] || '')
+
+    useHead({
+        title: `${data.value.title} | E-Commerce App | Nuxt`,
+    })
 </script>
 
 <template>

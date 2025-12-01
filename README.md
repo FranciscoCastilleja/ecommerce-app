@@ -1,4 +1,4 @@
-1. Transiciones
+1. Regresar a la pagina anterior en categoria seleccionada
 
 # 🛒 E-commerfce con Nuxt, Tailwind y TypeScript
 

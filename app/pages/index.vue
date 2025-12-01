@@ -1,5 +1,9 @@
 <script setup>
   const { data } = await useFetch('https://dummyjson.com/products/categories');
+
+  useHead({
+    title: 'E-Commerce App | Nuxt',
+  })
 </script>
 
 <template>

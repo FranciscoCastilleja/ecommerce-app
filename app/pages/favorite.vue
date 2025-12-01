@@ -1,5 +1,9 @@
 <script setup>
     const { favorites } = useGetFavorites()
+
+    useHead({
+        title: 'Favoritos | E-Commerce App | Nuxt',
+    })
 </script>
 
 <template>

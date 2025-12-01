@@ -62,6 +62,10 @@
 
         return products
     })
+
+    useHead({
+        title: `${route.params.id} | E-Commerce App | Nuxt`,
+    })
 </script>
 
 <template>

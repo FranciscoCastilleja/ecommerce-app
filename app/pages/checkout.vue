@@ -4,6 +4,10 @@
     function pay() {
         location.href = '/'
     }
+
+    useHead({
+        title: 'Proceso de Pago | E-Commerce App | Nuxt',
+    })
 </script>
 
 <template>

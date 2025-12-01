@@ -1,4 +1,8 @@
 <script setup>
+    useHead({
+        title: 'Carrito | E-Commerce App | Nuxt',
+    })
+
     const { cart } = useGetCart()
 
     const cartItems = ref(cart.value.map((p, index) => ({ index, subtotal: p.minimumOrderQuantity * (Math.round((p.price - (p.price * p.discountPercentage / 100)) * 100) / 100) })))
