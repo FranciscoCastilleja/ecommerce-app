@@ -65,7 +65,7 @@
 <template>
     <header class="flex relative h-[100px] bg-[#1E1E1E] border-b border-[#F5F5F5] items-center justify-around z-10">
         <NuxtLink href="/">
-            <h1 class="text-[#F5F5F5] text-2xl font-bold">E-commerce App</h1>
+            <h1 class="text-[#F5F5F5] text-2xl font-bold">E-Commerce App</h1>
         </NuxtLink>
         <div class="relative w-[550px]">
             <input type="search" name="" id="" v-model="search" @focus="handleFocus" @blur="handleBlur" class="flex pl-[10px] w-full h-[30px] rounded-md focus:outline-none" placeholder="Encuentra lo que buscas">

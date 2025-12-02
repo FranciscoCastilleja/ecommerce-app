@@ -1,5 +1,3 @@
-1. Regresar a la pagina anterior en categoria seleccionada
-
 # 🛒 E-commerfce con Nuxt, Tailwind y TypeScript
 
 Este proyecto es una tienda en línea moderna desarrollada con **Nuxt**, **Tailwind CSS** y **TypeScript**, enfocada en ofrecer una experiencia rápida, fluida y visualmente atractiva.  
