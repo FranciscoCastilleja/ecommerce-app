@@ -46,7 +46,10 @@
 </script>
 
 <template>
-    <div id="FilterBar" class="w-[210px] h-full bg-[#1E1E1E] flex flex-col items-center px-1 pb-2 gap-3 overflow-y-auto">
+    <div id="FilterBar" class="relative w-[210px] h-full bg-[#1E1E1E] flex flex-col items-center px-1 pb-2 gap-3 overflow-y-auto">
+        <NuxtLink href="/" class="flex absolute p-1 text-[#F5F5F5] top-3 left-3 justify-center items-center cursor-pointer z-10 hover:text-[#E55E00] hover:scale-110">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M15 6l-6 6l6 6" /></svg>
+        </NuxtLink>
         <h2 class="sticky w-full py-3 text-center text-[20px] font-bold text-[#F5F5F5] top-0 bg-[#1E1E1E] border-b border-[#F5F5F5]">Filtro</h2>
         <fieldset class="w-full p-4 bg-[#252525] border border-[#333] rounded-lg">
             <legend class="font-semibold text-[#F5F5F5]">Ordenar por</legend>
